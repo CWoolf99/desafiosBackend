@@ -5,44 +5,45 @@ class Usuario{
         this.libros=libros;
         this.mascotas=mascotas;
     }
-}
-const usuario1 = new Usuario('Christian', 'Woolf', [{nombre:'Harry potter' , autor:'JK Rowling'} , {nombre:'La odisea' , autor:'Homero'}] , ['perro', 'gato', 'pez'])
-console.log(usuario1)
+getfullname(){
+        return this.nombre+ ' ' + this.apellido;
+};
 
-const getfullname=()=>{
-    console.log( usuario1.nombre+ ' ' + usuario1.apellido);
-}
+addMascota(newMascota){
+        return this.mascotas.push(newMascota);
+};
 
-const addMascota=(newMascota)=>{
-    usuario1.mascotas.push(newMascota);
-    console.log(usuario1.mascotas);
-}
+countMascotas(){
+    return this.mascotas.length;
+};
 
-const countMascotas=()=>{
-    console.log(usuario1.mascotas.length);
-}
+addBook(newlibro){
+    this.libros.push(newlibro)
+};
 
-const addBook=(newlibro)=>{
-    usuario1.libros.push(newlibro)
-    console.log(usuario1.libros)
-}
+getBooksNames(){
+    let listalibros= this.libros
+    return listalibros.map((libro)=>libro.nombre)
+};
 
-const getBooksNames=()=>{
-    let listalibros= usuario1.libros
-    const nombres= listalibros.map((libro)=>libro.nombre)
-    console.log(nombres)
-}
+};
 
 let newMascot= 'hamster';
 
 let newBook= {nombre:'Mi libro', autor:'yo'};
 
-getfullname();
+const usuario1 = new Usuario('Christian', 'Woolf', [{nombre:'Harry potter' , autor:'JK Rowling'} , {nombre:'La odisea' , autor:'Homero'}] , ['perro', 'gato', 'pez'])
 
-addMascota(newMascot);
+console.log(usuario1.getfullname());
 
-countMascotas();
+usuario1.addMascota(newMascot);
 
-addBook(newBook);
+console.log(usuario1.countMascotas());
 
-getBooksNames();
+usuario1.addBook(newBook);
+
+console.log(usuario1.getBooksNames());
+
+console.log(usuario1);
+
+
