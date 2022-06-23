@@ -1,0 +1,1 @@
+[{"id":1,"nombre":"ab","precio":2,"imagen":"a"},{"id":2,"nombre":"cd","precio":3,"imagen":"b"},{"id":3,"nombre":"ef","precio":4,"imagen":"c"}]
