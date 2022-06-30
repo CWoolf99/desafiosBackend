@@ -50,7 +50,11 @@ class Contenedor{
             
             app.listen(port, () => {
                 console.log(`tu servidor está corriendo en el puerto ${port}`)
-            }); 
+            });
+            
+            app.on('error' , (error) => {
+                console.log(`Error: ${error}`);
+            });
         }
         catch (err) {
             console.log('error en la lectura')
@@ -111,7 +115,21 @@ let producto2 = {nombre:'cd',precio:3,imagen:'b'};
 
 let producto3 = {nombre:'ef',precio:4,imagen:'c'};
 
+const productos=[];
 
-product.getAll();
+product.save( producto1 , productos );
+
+setTimeout(() => {
+    product.save( producto2 , productos );  
+}, 1000);
+
+setTimeout(() => {
+    product.save( producto3 , productos );   
+}, 2000);
+
+setTimeout(() => {
+    product.getAll();    
+}, 3000);
+
 
 
