@@ -1,0 +1,29 @@
+<div class="text-bg-info p-3">
+    <h1>Productos</h1>
+    {{#if existelista}}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Imagen</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#each prods}}
+        <tr>
+            <td>{{this.nombre}}</td>
+            <td>{{this.precio}}</td>
+            <td>
+                <img src={{this.imagen}} class="img-thumbnail img-fluid" height="150" width="150">
+            </td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    {{else}}
+    <div class="alert alert-danger" role="alert">No se han registrado productos</div>
+    {{/if}}
+
+    <a href="/" type="button" class="btn btn-primary">Agregar nuevo producto</a>
+</div>

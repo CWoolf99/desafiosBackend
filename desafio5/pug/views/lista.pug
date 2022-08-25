@@ -1,0 +1,24 @@
+extends layouts/index.pug
+
+block vista
+ 
+
+    div(class="text-bg-info p-3")
+        h1='Productos'
+        if existelista
+            table(class="table")
+                thead
+                    tr
+                        th(scope="col")='nombre'
+                        th(scope="col")='precio'
+                        th(scope="col")='imagen'
+                tbody(class="table-group-divider")
+                    each producto in prods
+                            tr
+                                td=producto.nombre
+                                td=producto.precio
+                                td
+                                    img(src=producto.imagen class="img-fluid img-thumbnail" height="150" width="150" alt="Imagen producto")
+        else 
+            div(class="alert alert-danger" role="alert")='No se han registrado productos'
+        a(href="/" type="button" class="btn btn-primary")='Cargar un nuevo producto'
