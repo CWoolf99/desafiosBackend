@@ -8,7 +8,7 @@ class MsjsDaoMongo extends ContenedorMsjsMongo {
         })
     }
     async save (obj){
-        console.log(obj.entities)
+        console.log(obj.entitities)
         await super.save(obj)
     }
 

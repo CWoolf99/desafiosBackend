@@ -4,12 +4,13 @@ const { Server : IOServer } = require("socket.io");
 const {normalize , denormalize , schema} = require("normalizr");
 
 const Contenedor = require("./clases/productos");
-const MsjsDaoFbs = require("./dao/msjsDaoFbs");
 const { options } = require("./options/mariaDB");
+const MsjsDaoFs = require("./dao/msjsDaoFs");
+//const MsjsDaoFbs = require("./dao/msjsDaoFbs");
 
 
 const contenedor = new Contenedor(options);
-const contenedorMensajes = new MsjsDaoFbs();
+const contenedorMensajes = new MsjsDaoFs();
 
 const autor = new schema.Entity('autores', {} , {idAttribute:'id'});
 const mensaje = new schema.Entity('mensajes',{autor:autor},);
@@ -17,6 +18,11 @@ const mensaje = new schema.Entity('mensajes',{autor:autor},);
 const app = express();
 const httpServer = new Httpserver(app);
 const io = new IOServer(httpServer);
+
+let id = 1;
+function getNextId(){
+    return id++
+}
 
 /*app.get('/api/productos-test', (req,res)=>{
     const productos= crearProds(5)
@@ -38,7 +44,7 @@ function listaProductos(prods) {
 io.on('connection', async socket => {
     console.log('Nuevo cliente conectado!');
 
-    contenedor.crearTabla().then((prods) => {
+    /*contenedor.crearTabla().then((prods) => {
         console.log('Tabla productos funcionando');
         contenedor.listaproductos().then((prods) => {
           socket.emit("productos", prods);
@@ -52,9 +58,10 @@ io.on('connection', async socket => {
             io.sockets.emit("productos", productos);
           })
         })
-    });
+    });*/
 
     contenedorMensajes.getAll().then((msjs)=>{
+        console.log(msjs)
         let denormalizeMsjs;
         if (msjs === 0){
             denormalizeMsjs=[];
@@ -65,6 +72,7 @@ io.on('connection', async socket => {
     })
 
     socket.on('nuevoMensaje', async msjs => {
+        msjs.id = JSON.stringify(getNextId())
        const mensajesA = await contenedorMensajes.getAll()
         let normalizeMsjs;
         if(mensajesA === 0){

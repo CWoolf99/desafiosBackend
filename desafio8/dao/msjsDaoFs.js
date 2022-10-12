@@ -9,8 +9,14 @@ class MsjsDaoFs extends ContenedorMensajes{
         await super.save(obj)
     }
 
-    async getAll (obj){
-        return await super.getAll()
+    async getAll (){
+        const final = [await super.getAll()]
+        console.log(final)
+        if (final[0].entities === undefined){
+            return 0
+        } else{
+        return final[0]///cambia a 0
+        }
     }
 }
 

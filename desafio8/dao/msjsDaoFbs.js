@@ -10,7 +10,7 @@ class MsjsDaoFbs extends MsjsFbs {
 
     async getAll(){
         const final = await super.getAll()
-        if (final.length === 0){
+        if (final[0].entitioes === undefined){
             return 0
         } else{
         return final[0]

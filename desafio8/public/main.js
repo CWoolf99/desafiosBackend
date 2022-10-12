@@ -1,7 +1,6 @@
 const socket = io.connect();
 
-
-const agregarProducto = document.getElementById('formProductos')
+/*const agregarProducto = document.getElementById('formProductos')
 agregarProducto.addEventListener('submit', e => {
     e.preventDefault()
     const producto = {
@@ -27,7 +26,7 @@ function listaProductos(prods) {
             const lista = listahbs({ prods })
             return lista
         })
-}
+}*/
 
 const formMensaje = document.getElementById('formMensajes')
 formMensaje.addEventListener('submit', e => {
@@ -40,10 +39,8 @@ formMensaje.addEventListener('submit', e => {
         alias: formMensaje[4].value,
         avatar: formMensaje[5].value},
         texto: formMensaje[6].value,
-        fyh: new Date().toLocaleString(),
-        id:'3'
+        fyh: new Date().toLocaleString()
     }
-    console.log (data)
     socket.emit('nuevoMensaje', data);
     formMensaje.reset()
 })
