@@ -45,8 +45,10 @@ formMensaje.addEventListener('submit', e => {
     formMensaje.reset()
 })
 
-socket.on('mensajes', mensajes => {
+socket.on('mensajes', (mensajes,porcentaje) => {
     const html = listaMensajes(mensajes)
+    console.log(porcentaje)
+    //document.getElementsByid('')
     document.getElementById('mensajes').innerHTML = html;
 })
 
