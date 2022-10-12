@@ -1,0 +1,1 @@
+{"entities":{"autores":{"cwoolf210799@gmail.com":{"id":"cwoolf210799@gmail.com","nombre":"Christian","apellido":"Woolf","edad":"23","alias":"Wolf","avatar":"https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen.jpg"}},"mensajes":{"1":{"autor":"cwoolf210799@gmail.com","texto":"hola","fyh":"11/10/2022, 11:35:04","id":"1"}}},"result":"1"}

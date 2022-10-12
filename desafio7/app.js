@@ -1,6 +1,7 @@
 const express = require("express");
 const { Server : Httpserver } = require("http");
 const { Server : IOServer } = require("socket.io");
+const {normalize , denormalize , schema} = require("normalizr");
 
 const Contenedor = require("./clases/productos");
 const ContenedorMensajes = require("./clases/msjs");
