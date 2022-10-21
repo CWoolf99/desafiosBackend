@@ -2,11 +2,14 @@ const express = require("express");
 const { Server : Httpserver } = require("http");
 const { Server : IOServer } = require("socket.io");
 const {normalize , denormalize , schema} = require("normalizr");
+const handlebars = require('express-handlebars')
 
 const Contenedor = require("./clases/productos");
 const { options } = require("./options/mariaDB");
 const MsjsDaoFs = require("./dao/msjsDaoFs");
 //const MsjsDaoFbs = require("./dao/msjsDaoFbs");
+
+const generarProducto = require("./faker")
 
 
 const contenedor = new Contenedor(options);
@@ -94,6 +97,24 @@ io.on('connection', async socket => {
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
+
+app.engine(
+    "hbs",
+    handlebars({
+        extname: ".hbs",
+        defaultLayout: 'index.hbs',
+        layoutsDir:__dirname + '/views/layouts',
+        partialsDir:__dirname + '/views/partials'
+    })
+);
+app.set("view engine", "hbs");
+app.set("views", "./views");
+
+app.get('/productos/api-test',(req,res) => {
+    const productos = [generarProducto(1), generarProducto(2), generarProducto(3), generarProducto(4)
+    , generarProducto(5) ]
+    res.render("lista", {prods:productos , existelista:productos.length})
+})
 
 const PORT = 8080
 const connectedServer = httpServer.listen(PORT, () => {
