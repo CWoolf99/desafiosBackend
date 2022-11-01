@@ -1,10 +1,10 @@
 /////
 Dependedcias a instalar
-node install express,nodemon,express-handlebar, socket.io , firebase-admin , knex , mysql , normalizr 
+node install express ,nodemon , express-handlebar, socket.io , firebase-admin , knex , mysql , normalizr , bcrypt , conntect-mongo , dotenv , express-session , minimist , passport , passport-local   
 
 ////////
 Start script
-nodemon app.js
+nodemon app.js o nodemon app.js 'Port' para probar el objetos process 
 
 /////////
 Alternar dao
