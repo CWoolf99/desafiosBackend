@@ -183,6 +183,7 @@ app.get('/logout' , (req,res) => {
 app.get('/info', (req, res) => {
     const {url , method} = req
     infoLogger.info(`Ruta ${method} ${url} recibida`)
+    //console.log(process.argv.slice(2), process.platform,process.version,process.memoryUsage().rss,process.execPath,process.pid,process.cwd())
 	res.json({
 		argumentos_de_entrada: process.argv.slice(2),
 		nombre_sistema_operativo: process.platform,
@@ -190,7 +191,7 @@ app.get('/info', (req, res) => {
 		memoria_total_reservada: process.memoryUsage().rss,
 		path_de_ejecucion: process.execPath,
 		process_id: process.pid,
-		carpeta_del_proyecto: process.cwd(),
+		carpeta_del_proyecto: process.cwd()
 	});
 });
 // randoms ////////
