@@ -1,3 +1,14 @@
+Instrucciones para test
+
+
+axios.test.js es el test utilizando axios se corre con:
+node axios.test.js
+mochachai test es el super test que tiene unos arrays para productos para agregar, productos para actualizar e ids para eliminar productos.(verificar que existan los ids en el array prodcutosPut e ids sino los test fallarán, recomiendo correr el post de productos unicamente primero para tener una lista para poder probar los otros métodos) se corre con:
+mocha mochachai.test.js
+
+Instrucciones para iniciar server
+
+
 Parametros utilizados por linea de comandos: 
 1.-Port
 2.-modo del servidor
